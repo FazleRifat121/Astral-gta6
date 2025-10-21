@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+	--font-heading: "Oswald", sans-serif;
+	--font-body: "Roboto", sans-serif;
+	--color-neon: #00fff7;
+	--color-accent: #ff00ff;
+}
+
+/* Define your brand colors as CSS variables */
+:root {
+	--color-primary: #3c837d;
+	--color-accent: #1fd3c1;
+	--color-secondary: #ffffff;
+	--color-bgdark: #0a0a0a;
+	--color-shadowdark: #121212;
+}
+
+/* Body & global styles */
+body {
+	@apply bg-[var(--color-bgdark)] text-[var(--color-secondary)] font-sans;
+}
+html,
+body {
+	overflow: hidden; /* hides default scrollbar */
+}
+
+.section {
+	height: 100vh; /* full screen */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	scroll-snap-align: start;
+}
+
+/* Text utilities */
+.text-primary {
+	color: var(--color-primary);
+}
+.text-accent {
+	color: var(--color-accent);
+}
+.text-secondary {
+	color: var(--color-secondary);
+}
+
+/* Background utilities */
+.bg-primary {
+	background-color: var(--color-primary);
+}
+.bg-accent {
+	background-color: var(--color-accent);
+}
+.bg-secondary {
+	background-color: var(--color-secondary);
+}
+.bg-bgdark {
+	background-color: var(--color-bgdark);
+}
+.bg-shadowdark {
+	background-color: var(--color-shadowdark);
+}
+
+/* Border utilities */
+.border-primary {
+	border-color: var(--color-primary);
+}
+.border-accent {
+	border-color: var(--color-accent);
+}
+.border-secondary {
+	border-color: var(--color-secondary);
+}
+.border-bgdark {
+	border-color: var(--color-bgdark);
+}
+.border-shadowdark {
+	border-color: var(--color-shadowdark);
+}
+
+/* Hover effects */
+.hover\:text-primary:hover {
+	color: var(--color-primary);
+}
+.hover\:text-accent:hover {
+	color: var(--color-accent);
+}
+.hover\:bg-primary:hover {
+	background-color: var(--color-primary);
+}
+.hover\:bg-accent:hover {
+	background-color: var(--color-accent);
+}
+.hover\:border-primary:hover {
+	border-color: var(--color-primary);
+}
+.hover\:border-accent:hover {
+	border-color: var(--color-accent);
+}
+
+/* Optional neon glow effect */
+.glow-primary {
+	text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+}
+.glow-accent {
+	text-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent);
+}
