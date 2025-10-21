@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import img1 from "../assets/About/1 copy.jpg";
 const About = () => {
 	return (
-		<section className="h-screen w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-20 bg-bgdark z-50">
+		<section className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-20 bg-bgdark ">
 			{/* Image */}
 			<motion.div
 				className="md:w-1/2 w-full mb-8 md:mb-0"
@@ -13,7 +13,7 @@ const About = () => {
 				<img
 					src={img1} // Replace later
 					alt="About Astral Interior"
-					className="rounded-xl shadow-lg object-cover w-full h-full"
+					className="rounded-xl shadow-lg object-cover w-full h-full "
 				/>
 			</motion.div>
 

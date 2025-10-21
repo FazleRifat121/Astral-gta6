@@ -1,3 +1,4 @@
+import React from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
 // import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -23,7 +24,7 @@ const App = () => {
 							<section className="section">
 								<Hero />
 							</section>
-							<section className="section">
+							<section className="section mt-32">
 								<About />
 							</section>
 							<section className="section">
