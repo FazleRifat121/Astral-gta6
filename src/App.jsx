@@ -1,6 +1,6 @@
 import React from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
@@ -11,37 +11,37 @@ import Footer from "./components/Footer";
 const App = () => {
 	return (
 		<div className="font-sans text-secondary bg-bgdark">
+			{/* Fixed Navbar */}
+			<Navbar className="fixed top-0 left-0 w-full z-50" />
+
 			<ReactFullpage
-				// Fullpage options
-				scrollingSpeed={1000} // ms, cinematic feel
+				scrollingSpeed={1000} // cinematic feel
 				scrollOverflow={false} // no inner scroll bar
-				navigation={true} // optional: dots navigation
+				navigation={true} // dots navigation
 				showActiveTooltip={false}
 				anchors={["hero", "about", "projects", "philosophy", "contact"]}
-				render={() => {
-					return (
-						<ReactFullpage.Wrapper>
-							<section className="section">
-								<Hero />
-							</section>
-							<section className="section mt-32">
-								<About />
-							</section>
-							<section className="section">
-								<Projects />
-							</section>
-							<section className="section">
-								<Philosophy />
-							</section>
-							<section className="section">
-								<Contact />
-							</section>
-							<section className="section">
-								<Footer />
-							</section>
-						</ReactFullpage.Wrapper>
-					);
-				}}
+				render={() => (
+					<ReactFullpage.Wrapper>
+						<section className="section">
+							<Hero />
+						</section>
+						<section className="section">
+							<About />
+						</section>
+						<section className="section">
+							<Projects />
+						</section>
+						<section className="section">
+							<Philosophy />
+						</section>
+						<section className="section">
+							<Contact />
+						</section>
+						<section className="section">
+							<Footer />
+						</section>
+					</ReactFullpage.Wrapper>
+				)}
 			/>
 		</div>
 	);

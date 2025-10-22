@@ -1,17 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import vdo from "../assets/hero/hero-bg.mp4.mp4";
+// import vdo from "../assets/hero/hero-bg.mp4.mp4";
+
 const Hero = () => {
+	const [modalOpen, setModalOpen] = useState(false);
+
 	return (
 		<section className="relative h-screen w-full overflow-hidden">
-			{/* Background Video */}
-			<video
-				src={vdo}
-				autoPlay
-				loop
-				muted
-				className="absolute w-full h-full object-cover"
-			/>
-
 			{/* Overlay */}
 			<div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6">
 				{/* Logo / Title */}
@@ -48,7 +43,46 @@ const Hero = () => {
 				>
 					Explore Our Work
 				</motion.button>
+
+				{/* Play Button */}
+				<motion.div
+					whileHover={{ scale: 1.2 }}
+					onClick={() => setModalOpen(true)}
+					className="mt-12 w-20 h-20 rounded-full bg-primary/80 flex justify-center items-center cursor-pointer"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="w-10 h-10 text-secondary"
+						fill="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path d="M4 2v20l18-10L4 2z" />
+					</svg>
+				</motion.div>
 			</div>
+
+			{/* Modal */}
+			{modalOpen && (
+				<div className="fixed inset-0 z-50 flex justify-center items-center bg-black/80">
+					<div className="relative w-11/12 md:w-3/4 lg:w-1/2 aspect-video">
+						<iframe
+							width="100%"
+							height="100%"
+							src="https://www.youtube.com/embed/MndmXw7dsRM?autoplay=1"
+							title="YouTube video"
+							allow="autoplay; encrypted-media"
+							allowFullScreen
+							className="rounded-xl"
+						/>
+						<button
+							onClick={() => setModalOpen(false)}
+							className="absolute top-2 right-2 text-white text-3xl font-bold"
+						>
+							&times;
+						</button>
+					</div>
+				</div>
+			)}
 		</section>
 	);
 };
