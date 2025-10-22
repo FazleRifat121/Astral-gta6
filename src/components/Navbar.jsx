@@ -8,10 +8,10 @@ import img3 from "../assets/nav/img3.jpeg";
 import img4 from "../assets/nav/img4.jpeg";
 import img5 from "../assets/nav/img5.jpeg";
 
-const navItems = ["Home", "about", "projects", "philosophy", "contact"];
+const navItems = ["Home", "About", "Projects", "Philosophy", "Contact"];
 const hoverImages = [img1, img2, img3, img4, img5];
 
-const Navbar = () => {
+const Navbar = ({ lenis }) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [currentImage, setCurrentImage] = useState(logo);
 
@@ -45,6 +45,13 @@ const Navbar = () => {
 		},
 	};
 
+	const handleScrollTo = (id) => {
+		const target = document.getElementById(id.toLowerCase());
+		if (target && lenis?.current) {
+			lenis.current.scrollTo(target);
+		}
+	};
+
 	return (
 		<>
 			{/* Navbar */}
@@ -60,7 +67,7 @@ const Navbar = () => {
 				</div>
 			</nav>
 
-			{/* Menu with AnimatePresence */}
+			{/* Menu */}
 			<AnimatePresence>
 				{menuOpen && (
 					<motion.div
@@ -69,7 +76,7 @@ const Navbar = () => {
 						animate="visible"
 						exit="exit"
 					>
-						{/* Left Half: Image */}
+						{/* Left Image */}
 						<motion.div
 							className="hidden lg:flex w-1/2 h-full items-center justify-center bg-black"
 							variants={imageVariants}
@@ -93,7 +100,7 @@ const Navbar = () => {
 							/>
 						</motion.div>
 
-						{/* Right Half: Menu Items */}
+						{/* Right Menu */}
 						<motion.div
 							className="w-full lg:w-1/2 bg-bgdark flex flex-col justify-center items-center relative h-screen"
 							variants={menuVariants}
@@ -105,7 +112,7 @@ const Navbar = () => {
 								<FaTimes />
 							</button>
 
-							<ul className="flex flex-col gap-12 text-3xl text-secondary uppercase text-center">
+							<ul className="flex flex-col gap-12 text-3xl text-secondary  text-center capitalize">
 								{navItems.map((item, index) => (
 									<motion.li
 										key={item}
@@ -121,13 +128,15 @@ const Navbar = () => {
 										onMouseEnter={() => setCurrentImage(hoverImages[index])}
 										onMouseLeave={() => setCurrentImage(logo)}
 									>
-										<a
-											href={`#${item}`}
-											onClick={() => setMenuOpen(false)}
+										<button
+											onClick={() => {
+												handleScrollTo(item);
+												setMenuOpen(false);
+											}}
 											className="cursor-pointer hover:text-primary transition"
 										>
 											{item}
-										</a>
+										</button>
 									</motion.li>
 								))}
 							</ul>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import ReactFullpage from "@fullpage/react-fullpage";
+import { useState, useEffect, useRef } from "react";
+import Lenis from "@studio-freight/lenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -11,41 +11,52 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const App = () => {
 	const [fullscreenImage, setFullscreenImage] = useState(null);
+	const lenisRef = useRef(null);
+
+	useEffect(() => {
+		const lenis = new Lenis({
+			duration: 1.2,
+			easing: (t) => t,
+			smooth: true,
+			direction: "vertical",
+		});
+
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+
+		lenisRef.current = lenis;
+	}, []);
 
 	return (
 		<div className="font-sans text-secondary bg-bgdark overflow-hidden relative">
-			<Navbar />
+			<Navbar lenis={lenisRef} />
 
-			<ReactFullpage
-				scrollingSpeed={1000}
-				scrollOverflow={false}
-				navigation={false}
-				anchors={["hero", "about", "projects", "philosophy", "contact"]}
-				render={() => (
-					<ReactFullpage.Wrapper>
-						<section className="section">
-							<Hero />
-						</section>
-						<section className="section">
-							<About onImageClick={setFullscreenImage} />
-						</section>
-						<section className="section">
-							<Projects />
-						</section>
-						<section className="section">
-							<Philosophy />
-						</section>
-						<section className="section">
-							<Contact />
-						</section>
-						<section className="section">
-							<Footer />
-						</section>
-					</ReactFullpage.Wrapper>
-				)}
-			/>
+			<div className="min-h-screen snap-y snap-mandatory">
+				<section id="home" className="section snap-start min-h-screen">
+					<Hero />
+				</section>
+				<section id="about" className="section snap-start min-h-screen">
+					<About onImageClick={setFullscreenImage} />
+				</section>
+				<section id="projects" className="section snap-start min-h-screen">
+					<Projects />
+				</section>
+				<section id="philosophy" className="section snap-start min-h-screen">
+					<Philosophy />
+				</section>
+				<section id="contact" className="section snap-start min-h-screen">
+					<Contact />
+				</section>
+				<section id="footer" className="section snap-start min-h-screen">
+					<Footer />
+				</section>
+			</div>
 
-			{/* Fullscreen overlay */}
+			{/* Fullscreen Image Overlay */}
 			<AnimatePresence>
 				{fullscreenImage && (
 					<motion.div

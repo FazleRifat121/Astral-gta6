@@ -29,21 +29,6 @@ const Hero = () => {
 					Transforming Spaces, Defining Style
 				</motion.p>
 
-				{/* CTA Button */}
-				<motion.button
-					whileHover={{
-						scale: 1.1,
-						textShadow: "0 0 10px #3c837d, 0 0 20px #1fd3c1",
-					}}
-					onClick={() => {
-						const about = document.getElementById("about");
-						about?.scrollIntoView({ behavior: "smooth" });
-					}}
-					className="mt-8 px-8 py-4 rounded-lg border border-primary bg-primary text-secondary glow-accent font-bold"
-				>
-					Explore Our Work
-				</motion.button>
-
 				{/* Play Button */}
 				<motion.div
 					whileHover={{ scale: 1.2 }}
