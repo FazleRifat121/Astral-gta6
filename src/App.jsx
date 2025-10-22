@@ -10,14 +10,14 @@ import Footer from "./components/Footer";
 
 const App = () => {
 	return (
-		<div className="font-sans text-secondary bg-bgdark">
+		<div className="font-sans text-secondary bg-bgdark overflow-hidden">
 			{/* Fixed Navbar */}
 			<Navbar className="fixed top-0 left-0 w-full z-50" />
 
 			<ReactFullpage
 				scrollingSpeed={1000} // cinematic feel
 				scrollOverflow={false} // no inner scroll bar
-				navigation={true} // dots navigation
+				navigation={false} // dots navigation
 				showActiveTooltip={false}
 				anchors={["hero", "about", "projects", "philosophy", "contact"]}
 				render={() => (
